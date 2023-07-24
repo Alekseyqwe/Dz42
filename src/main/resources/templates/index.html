@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Management</title>
+</head>
+<body>
+<h1>User Management</h1>
+
+<form action="/add" method="post">
+    <label for="id">Id:</label>
+    <input type="text" id="id" name="id" required>
+
+  <label for="name">Name:</label>
+  <input type="text" id="name" name="name" required>
+
+  <label for="group">Group:</label>
+  <input type="text" id="group" name="group" required>
+
+  <button type="submit">Add User</button>
+</form>
+
+ <table>
+   <thead>
+     <tr>
+       <th>ID</th>
+       <th>Name</th>
+       <th>Group</th>
+       <th>Action</th>
+      </tr>
+   </thead>
+    <tbody>
+       <tr th:each="user : ${users}">
+        <td th:text="${user.id}"></td>
+        <td th:text="${user.name}"></td>
+        <td th:text="${user.group}"></td>
+        <td><a th:href="@{/delete/{id}(id=${user.id})}" class="btn btn-danger">Delete</a></td>
+       </tr>
+   </tbody>
+</table>
+
+</body>
+</html>
